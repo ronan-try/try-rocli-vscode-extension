@@ -10,14 +10,19 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:try-vscode-extension.helloWorld"
+    "onCommand:try-vscode-extension.helloWorld",
+    "onCommand:try-vscode-extension.roMergeRequest"
   ],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
       {
         "command": "try-vscode-extension.helloWorld",
-        "title": "Hello World"
+        "title": "我是helloWorld"
+      },
+      {
+        "command": "try-vscode-extension.roMergeRequest",
+        "title": "ro mr/merge request"
       }
     ]
   },

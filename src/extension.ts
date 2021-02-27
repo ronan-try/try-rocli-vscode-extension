@@ -2,26 +2,16 @@
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
 
-// this method is called when your extension is activated
-// your extension is activated the very first time the command is executed
+import cmdsRegister from './cmds/index';
+
+// 每次执行扩展命令时，都会触发activate()函数
+// 注册命令的实质是：
+// 1. 只要运行过vscode.commands.regesterCommand即为注册成功
+// 2. context.subscriptoins.push(...) 为了监听&释放一些不用的功能随着扩展释放
 export function activate(context: vscode.ExtensionContext) {
-
-	// Use the console to output diagnostic information (console.log) and errors (console.error)
-	// This line of code will only be executed once when your extension is activated
-	console.log('Congratulations, your extension "try-vscode-extension" is now active!');
-
-	// The command has been defined in the package.json file
-	// Now provide the implementation of the command with registerCommand
-	// The commandId parameter must match the command field in package.json
-	let disposable = vscode.commands.registerCommand('try-vscode-extension.helloWorld', () => {
-		// The code you place here will be executed every time your command is executed
-
-		// Display a message box to the user
-		vscode.window.showInformationMessage('Hello World from try-vscode-extension!');
-	});
-
-	context.subscriptions.push(disposable);
+	let cmds = cmdsRegister();
+	context.subscriptions.push(...cmds);
 }
 
-// this method is called when your extension is deactivated
-export function deactivate() {}
+// 当扩展失效时：
+export function deactivate() { }
