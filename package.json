@@ -22,7 +22,7 @@
       },
       {
         "command": "try-vscode-extension.roMergeRequest",
-        "title": "ro mr/merge request"
+        "title": "ro mr /pr (marge /pull request)"
       }
     ]
   },
