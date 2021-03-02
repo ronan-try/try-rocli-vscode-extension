@@ -12,7 +12,7 @@ interface CmdESMoudle {
   esModule: () => void,
 }
 
-export default function (): any[] {
+export default function (context: vscode.ExtensionContext): any[] {
   const cmdConfigs: CmdConfig[] = packagejson.contributes.commands;
   const cmdESModules: CmdESMoudle[] = [];
 
@@ -24,6 +24,6 @@ export default function (): any[] {
   });
   
   return cmdESModules.map(item => {
-    vscode.commands.registerCommand(item.command, item.esModule);
+    vscode.commands.registerCommand(item.command, item.esModule.bind(context, context));
   });
 };

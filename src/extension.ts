@@ -9,7 +9,7 @@ import cmdsRegister from './cmds/index';
 // 1. 只要运行过vscode.commands.regesterCommand即为注册成功
 // 2. context.subscriptoins.push(...) 为了监听&释放一些不用的功能随着扩展释放
 export function activate(context: vscode.ExtensionContext) {
-	let cmds = cmdsRegister();
+	let cmds = cmdsRegister(context);
 	context.subscriptions.push(...cmds);
 }
 
